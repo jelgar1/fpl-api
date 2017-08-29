@@ -13,7 +13,7 @@ export class ApiService {
   get(): Observable<Object> {
     console.log('GET launched!');
     return this.http.get(
-      this.baseUrl())
+      'https://cors-anywhere.herokuapp.com/' + this.baseUrl())
       .map(response => response.json());
   }
 }
