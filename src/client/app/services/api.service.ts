@@ -1,7 +1,7 @@
-import {Component, Injectable, OnInit, Inject} from '@angular/core';
-
-import {Http, Response, RequestOptions, Headers} from '@angular/http';
-import {Observable} from 'rxjs/Rx';
+import { Component, Injectable, OnInit, Inject } from '@angular/core';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import { DataDump } from '../models/data_dump';
 
 @Injectable()
 export class ApiService {
@@ -14,6 +14,6 @@ export class ApiService {
     console.log('GET launched!');
     return this.http.get(
       'https://cors-anywhere.herokuapp.com/' + this.baseUrl())
-      .map(response => response.json());
+      .map(response => DataDump.fromJSON(response.json()));
   }
 }
