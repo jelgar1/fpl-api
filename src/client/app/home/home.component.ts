@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { Player } from '../models/player';
+import { AllStats } from '../models/all_stats';
 
 
 @Component({
@@ -9,16 +11,17 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
+  players: Array<Player>
   constructor(public apiService: ApiService) {}
   ngOnInit() {
-    this.getNames();
+    this.updateStats();
   }
 
-  getNames() {
+  updateStats() {
     this.apiService.get()
-      .subscribe(
-        data => console.log('This is the data:', data)
-      );
+      .subscribe((allStats: AllStats) => {
+        this.players = allStats.elements;
+        console.log(this.players);
+      });
   }
 }
