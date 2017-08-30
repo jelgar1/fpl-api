@@ -1,4 +1,10 @@
-<form (submit)="getNames()">
-  <button type="submit">Get players</button>
+<form (submit)="updateStats()">
+  <button type="submit">Update stats</button>
 </form>
+
+
+<li *ngFor="let player of players">
+  {{ player.web_name }} - {{player.goals_scored}}
+</li>
+
 
