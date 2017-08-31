@@ -14,6 +14,6 @@ export class ApiService {
     console.log('GET launched!');
     return this.http.get(
       'https://cors-anywhere.herokuapp.com/' + this.baseUrl())
-      .map(response => AllStats.fromJSON(response.json()));
+      .map(response => response.json());
   }
 }
