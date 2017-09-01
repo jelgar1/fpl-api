@@ -1,7 +1,6 @@
 import { Component, Injectable, OnInit, Inject } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { AllStats } from '../models/all_stats';
 
 @Injectable()
 export class ApiService {
