@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../models/player';
-import { PlayersService} from "../services/players.service";
+import { PlayersService } from "../services/players.service";
 
 
 @Component({
@@ -10,7 +10,7 @@ import { PlayersService} from "../services/players.service";
   providers: [PlayersService]
 })
 export class PlayersComponent implements OnInit {
-  players: Array<Player>
+  players: Array<Player>;
   constructor(public playersService: PlayersService) {}
   ngOnInit() {
     this.updateStats();
