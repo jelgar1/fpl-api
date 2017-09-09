@@ -1,10 +1,2 @@
-<form (submit)="updateStats()">
-  <button type="submit">Update stats</button>
-</form>
-
-
-<li *ngFor="let player of players">
-  {{ player.web_name }} - {{player.goals_scored}}
-</li>
-
-
+<button routerLink="/players" class="flat-butt">Get players</button>
+<button routerLink="/teams" class="flat-butt">Get teams</button>
