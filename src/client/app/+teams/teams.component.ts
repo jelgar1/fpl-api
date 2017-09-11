@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeamsService} from "../services/teams.service";
 import {PlayersService} from "../services/players.service";
 import {Player} from "../models/player";
+import {Team} from "../models/team";
 
 @Component({
   moduleId: module.id,
@@ -12,7 +13,7 @@ import {Player} from "../models/player";
 
 export class TeamsComponent implements OnInit {
   players: Array<Player>;
-  teams: Array<object>;
+  teams: Array<Team>;
   constructor(public teamsService: TeamsService, public playersService: PlayersService) {}
   ngOnInit() {
     this.loadPlayers();
@@ -29,6 +30,7 @@ export class TeamsComponent implements OnInit {
       });
   }
   filterTeams() {
+    this.teams.map((team: any) => console.log('Team #', team.id, team));
     // map teams and filter only players belonging in teams
   }
 }
