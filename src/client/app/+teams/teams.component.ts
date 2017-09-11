@@ -12,13 +12,13 @@ import {Team} from "../models/team";
 })
 
 export class TeamsComponent implements OnInit {
-  players: Array<Player>;
-  teams: Array<Team>;
+  players: Array<Player> = [];
+  teams: Array<Team> = [];
+  currentTeam: Team = new Team;
   constructor(public teamsService: TeamsService, public playersService: PlayersService) {}
   ngOnInit() {
-    this.loadPlayers();
-    this.loadTeams();
-    this.filterTeams();
+    this.currentTeam['players'] = [];
+    this.loadTeam();
   }
   loadTeams() {
     this.teams = this.teamsService.loadAll();
@@ -29,8 +29,18 @@ export class TeamsComponent implements OnInit {
         this.players = data;
       });
   }
-  filterTeams() {
-    this.teams.map((team: any) => console.log('Team #', team.id, team));
-    // map teams and filter only players belonging in teams
+  loadTeam() {
+    this.playersService.load()
+      .subscribe((data: any) => {
+        this.players = data;
+        let loadedTeam: Team = this.teamsService.loadOne(1);
+        loadedTeam['players'] = [];
+        let matchedPlayer = undefined;
+        loadedTeam.playerIds.map((selectedPlayer: any) => {
+          matchedPlayer = this.players.find((player) => player.id === selectedPlayer);
+          loadedTeam.players.push(matchedPlayer);
+        });
+        this.currentTeam = loadedTeam;
+      });
   }
 }

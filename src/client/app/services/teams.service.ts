@@ -7,4 +7,9 @@ export class TeamsService {
   loadAll(): Array<Team> {
     return this.teams.map((raw: any) => Team.fromJSON(raw));
   }
+
+  loadOne(id: Number): Team {
+    let selectedTeam: any =  this.teams.find(team => team.id === id)
+    return Team.fromJSON(selectedTeam);
+  }
 }
