@@ -10,7 +10,6 @@ export class ApiService {
     return 'https://fantasy.premierleague.com/drf/bootstrap-static';
   }
   get(): Observable<Object> {
-    console.log('GET launched!');
     return this.http.get(
       'https://cors-anywhere.herokuapp.com/' + this.baseUrl())
       .map(response => response.json());

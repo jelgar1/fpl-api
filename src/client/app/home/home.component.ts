@@ -7,7 +7,6 @@ import { PlayersService} from "../services/players.service";
   moduleId: module.id,
   selector: 'sd-home',
   templateUrl: 'home.component.html',
-  styleUrls: ['home.component.css'],
   providers: [PlayersService]
 })
 export class HomeComponent implements OnInit {
