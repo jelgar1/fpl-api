@@ -1,6 +1,17 @@
-<h1>Teams</h1>
-<button (click)="loadTeam()">Find team 1</button>
-
-<li *ngFor="let player of currentTeam.players">
-  {{ player.web_name }} - {{player.goals_scored}}
-</li>
+<button (click)="loadTeam()">Update team stats</button>
+<div *ngFor="let team of teams">
+  <h3>{{team.name}}</h3>
+  <h4>{{team.owner}}</h4>
+  <table class="table table-bordered">
+    <tr>
+      <th>Player</th>
+      <th>Goals</th>
+      <th>FPL Threat</th>
+    </tr>
+    <tr *ngFor="let player of team.players">
+      <td>{{player.web_name}}</td>
+      <td>{{player.goals_scored}}</td>
+      <td>{{player.threat}}</td>
+    </tr>
+  </table>
+</div>
