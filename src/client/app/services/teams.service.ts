@@ -6,7 +6,7 @@ export class TeamsService {
   teams = [
     {id: 1, name: 'Dyslexia Untied', owner: 'Larry Griffiths', playerIds: [462, 35, 461, 15, 105, 132, 490, 451, 259, 371]},
     {id: 2, name: 'Mumford & Son', owner: 'Adam Davey', playerIds: [311, 167, 382, 234, 282, 390, 232, 278, 26, 187]},
-    {id: 3, name: 'Klaasen is Permanent', owner: 'Ludo Goodliffe', palyerIds: [357, 244, 377, 106, 108, 89, 365, 253, 487, 25]},
+    {id: 3, name: 'Klaasen is Permanent', owner: 'Ludo Goodliffe', playerIds: [357, 244, 377, 106, 108, 89, 365, 253, 487, 25]},
     {id: 4, name: 'Que Salah, Salah', owner: 'Ben Settle', playerIds: [442, 223, 447, 14, 21, 454, 448, 225, 113, 236]},
     {id: 5, name: 'FuckTheAlligatior', owner: 'Steve Miles', playerIds: [98, 33, 156, 181, 158, 428, 156, 455, 134, 258]},
     {id: 6, name: 'Bunn Ayew', owner: 'Joe Pickover', playerIds: [289, 219, 10, 147, 45, 299, 346, 410, 28, 52]},
@@ -23,7 +23,7 @@ export class TeamsService {
     {id: 17, name: 'Lil Jon Voigt Bookie?', owner: 'Josh Clarke & Josh Pickover', playerIds: [118, 383, 193, 182, 109, 18, 296, 47, 327, 347]},
     {id: 18, name: "Brendan's Disciples", owner: 'Chris Smith & Tom Verghese', playerIds: [102, 380, 215, 126, 453, 131, 228, 87, 51, 374]},
     {id: 19, name: 'Dirty Sanchez', owner: 'Tom Blower & Stephen Hadfield', playerIds: [34, 217, 307, 295, 16, 19, 199, 432, 92, 417]},
-    {id: 20, name: 'Gansters Allerdyce', owner: 'Lloyd Williams', playerIds: [97, 267, 379, 104, 252, 208, 129, 434, 435, 303]}
+    {id: 20, name: 'Gangsters Allardyce', owner: 'Lloyd Williams', playerIds: [97, 267, 379, 104, 252, 208, 129, 434, 435, 303]}
   ];
 
   loadAll(): Array<Team> {

@@ -13,15 +13,21 @@ import {Team} from "../models/team";
 
 export class TeamsComponent implements OnInit {
   players: Array<Player> = [];
-  teams: Array<Team> = [];
   currentTeam: Team = new Team;
+  teams: Array<Team> = [this.currentTeam];
   constructor(public teamsService: TeamsService, public playersService: PlayersService) {}
   ngOnInit() {
-    this.currentTeam['players'] = [];
-    this.loadTeam();
+    this.loadTeams();
   }
   loadTeams() {
-    this.teams = this.teamsService.loadAll();
+    this.playersService.load()
+      .subscribe( (data: any) => {
+        this.players = data;
+        this.teams = this.teamsService.loadAll();
+        this.teams.map((team: any) => {
+          this.loadTeamPlayers(team);
+        });
+      });
   }
   loadPlayers() {
     this.playersService.load()
@@ -29,18 +35,21 @@ export class TeamsComponent implements OnInit {
         this.players = data;
       });
   }
-  loadTeam() {
+  loadTeam(teamId: number) {
     this.playersService.load()
       .subscribe((data: any) => {
         this.players = data;
-        let loadedTeam: Team = this.teamsService.loadOne(1);
-        loadedTeam['players'] = [];
-        let matchedPlayer = undefined;
-        loadedTeam.playerIds.map((selectedPlayer: any) => {
-          matchedPlayer = this.players.find((player) => player.id === selectedPlayer);
-          loadedTeam.players.push(matchedPlayer);
-        });
-        this.currentTeam = loadedTeam;
+        this.currentTeam = this.loadTeamPlayers(this.teamsService.loadOne(teamId));
+        console.log(this.currentTeam);
       });
+  }
+  loadTeamPlayers(team: any) {
+    team['players'] = [];
+    let matchedPlayer = undefined;
+    team.playerIds.map((selectedPlayer: any) => {
+      matchedPlayer = this.players.find((player) => player.id === selectedPlayer);
+      team.players.push(matchedPlayer);
+    });
+    return team;
   }
 }

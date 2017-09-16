@@ -2,6 +2,7 @@ export class Player {
   id: number;
   web_name: string;
   goals_scored: number;
+  threat: string;
 
   static fromJSON(obj: any): Player {
 
