@@ -12,4 +12,7 @@ export class PlayersService extends ApiService {
     let loadOne = this.get().map((data: any) => data.elements.map((raw: any) => Player.fromJSON(raw)));
     return loadOne;
   }
+  loadPlayer(id: number) {
+    return this.getIndividual(id);
+  }
 }

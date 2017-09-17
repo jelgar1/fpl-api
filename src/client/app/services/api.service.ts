@@ -9,9 +9,17 @@ export class ApiService {
   baseUrl(): string {
     return 'https://fantasy.premierleague.com/drf/bootstrap-static';
   }
+  individualBaseUrll(): string {
+    return 'https://fantasy.premierleague.com/drf/element-summary/';
+  }
   get(): Observable<Object> {
     return this.http.get(
       'https://cors-anywhere.herokuapp.com/' + this.baseUrl())
       .map(response => response.json());
+  }
+  getIndividual(id: number): Observable<Object> {
+   return this.http.get(
+     'https://cors-anywhere.herokuapp.com/' + this.individualBaseUrll() + id)
+     .map(response => response.json());
   }
 }
