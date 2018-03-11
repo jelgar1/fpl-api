@@ -3,19 +3,22 @@ import { TeamsService} from "../services/teams.service";
 import {PlayersService} from "../services/players.service";
 import {Player} from "../models/player";
 import {Team} from "../models/team";
+import {GameweeksService} from '../services/gameweeks.service';
 
 @Component({
   moduleId: module.id,
   selector: 'sd-teams',
   templateUrl: 'teams.component.html',
-  providers: [TeamsService, PlayersService]
+  providers: [TeamsService, PlayersService, GameweeksService]
 })
 
 export class TeamsComponent implements OnInit {
   players: Array<Player> = [];
   currentTeam: Team = new Team;
   teams: Array<Team> = [this.currentTeam];
-  constructor(public teamsService: TeamsService, public playersService: PlayersService) {}
+  constructor(public teamsService: TeamsService,
+              public playersService: PlayersService,
+              public gameweeksService: GameweeksService) {}
   ngOnInit() {
     this.loadTeams();
   }
@@ -51,5 +54,11 @@ export class TeamsComponent implements OnInit {
       team.players.push(matchedPlayer);
     });
     return team;
+  }
+  loadGameweeks() {
+    this.gameweeksService.load()
+      .subscribe( (data: any) => {
+        console.log('GWs: ', data);
+      });
   }
 }

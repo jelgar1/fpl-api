@@ -1,4 +1,6 @@
 <button (click)="loadTeam()">Update team stats</button>
+<button (click)="loadGameweeks()">Load gameweek</button>
+
 <div *ngFor="let team of teams">
   <h3>{{team.name}}</h3>
   <h4>{{team.owner}}</h4>

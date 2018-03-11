@@ -10,10 +10,19 @@ import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import {PlayersModule} from "./+players/players.module";
 import {TeamsModule} from "./+teams/teams.module";
+import {DetailsModule} from './+details/details.module';
 
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule, HomeModule,PlayersModule, TeamsModule, SharedModule.forRoot()],
+  imports: [BrowserModule,
+            HttpModule,
+            AppRoutingModule,
+            AboutModule,
+            HomeModule,
+            PlayersModule,
+            TeamsModule,
+            DetailsModule,
+            SharedModule.forRoot()],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,
